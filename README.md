@@ -78,19 +78,6 @@ If you ever need to bypass the hook (run on the original port, no Caddy):
 LOCAL_DOMAIN_DISABLE=1 bin/dev
 ```
 
-### Bypassing Rails::Server
-
-A few setups invoke Puma directly and never go through `Rails::Server`
-(e.g. `bundle exec puma -C config/puma.rb`). For those, use the explicit
-wrapper in `Procfile.dev`:
-
-```diff
-- web: bundle exec puma -C config/puma.rb
-+ web: bundle exec local_domain serve
-```
-
-`local_domain serve` does the same port/Caddy setup, then `exec`s `rails server`.
-
 ## CLI
 
 ```
