@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require "local_domain/cli"
+
+LocalDomain::CLI.new(ARGV).call
