@@ -29,6 +29,7 @@ module LocalDomain
         caddy.register(subdomain: subdomain, host: host, upstream_port: port)
         $stdout.puts Banner.started(host: host, port: port, bind: LocalDomain.config.bind_host)
         $stdout.flush
+        Banner.set_terminal_title(host)
 
         @state = { subdomain: subdomain, host: host, port: port, caddy: caddy }
         install_at_exit

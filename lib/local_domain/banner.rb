@@ -37,6 +37,16 @@ module LocalDomain
       "#{color(BOLD + MAGENTA, "LOCAL_DOMAIN")} #{color(GREY, message)}"
     end
 
+    # Sets the terminal window + tab title via OSC 0. Writes directly to
+    # /dev/tty so it works even when stdout is piped through foreman/overmind.
+    def set_terminal_title(title)
+      return if ENV["LOCAL_DOMAIN_NO_TITLE"] == "1"
+
+      File.open("/dev/tty", "a") { |tty| tty.write("\e]0;#{title}\a") }
+    rescue StandardError
+      # No controlling tty (CI, daemon, etc.) — skip silently.
+    end
+
     def color(code, text)
       return text if no_color?
       "#{code}#{text}#{RESET}"

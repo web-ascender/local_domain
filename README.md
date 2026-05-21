@@ -76,7 +76,12 @@ The Railtie does two things:
 - Appends `<folder>.localhost` to `config.hosts` so Rails' DNS rebinding
   protection doesn't 403 the proxied request.
 
-If you ever need to bypass the hook (run on the original port, no Caddy):
+Your terminal tab is also automatically renamed to the subdomain (e.g.
+`my-app.localhost`) so you can tell which app each tab is running. Works in
+iTerm2, Terminal.app, Ghostty, kitty, alacritty, and most modern terminals.
+Set `LOCAL_DOMAIN_NO_TITLE=1` to opt out.
+
+If you ever need to bypass the hook entirely (run on the original port, no Caddy):
 
 ```sh
 LOCAL_DOMAIN_DISABLE=1 bin/dev
