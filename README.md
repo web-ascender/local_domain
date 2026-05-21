@@ -60,11 +60,15 @@ no `config/puma.rb` changes:
 
 ```ruby
 group :development do
-  gem "local_domain"
+  gem "local_domain", github: "web-ascender/local_domain"
 end
 ```
 
-Run `bin/dev` (or `bin/rails server`) and visit `https://<your-folder-name>.localhost`.
+(Not yet on RubyGems — pull straight from GitHub for now. You can pin a
+specific commit or tag with `ref:` / `tag:` / `branch:` once we cut releases.)
+
+Then `bundle install`, run `bin/dev` (or `bin/rails server`), and visit
+`https://<your-folder-name>.localhost`.
 
 The Railtie does two things:
 - Prepends `Rails::Server#start` to override the port and register/unregister
