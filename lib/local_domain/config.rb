@@ -3,7 +3,7 @@ module LocalDomain
     DEFAULTS = {
       tld:            "localhost",
       admin_url:      "http://127.0.0.1:2019",
-      port_range:     (3001..3999),
+      port_range:     (3000..3999),
       caddy_listen:   ":443",
       bind_host:      "127.0.0.1",
       state_dir:      File.expand_path("~/.local_domain"),

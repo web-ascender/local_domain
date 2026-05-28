@@ -21,7 +21,7 @@ holds a local CA, and auto-issues HTTPS certificates for `*.localhost`.
 so when `bin/dev` (or `bin/rails server`) boots:
 
 1. Reads the current folder name (e.g. `my-app`).
-2. Picks a free TCP port in `3001..3999`.
+2. Picks a free TCP port in `3000..3999` (prefers 3000 when it's free).
 3. POSTs a route to Caddy's admin API: `host = my-app.localhost`,
    `reverse_proxy 127.0.0.1:<port>`.
 4. Mutates the server's bind options so Puma listens on that port.
